@@ -1,18 +1,15 @@
 services:
   opentts:
-    image: synesthesiam/opentts:arm64
+    image: my-opentts
     ports:
       - 5500:5500
     command: --marytts-url http://marytts:59125 --mozillatts-url http://mozillatts:5002
     tty: true
-    depends_on:
-      - marytts
-      - mozillatts
 
   marytts:
-    image: synesthesiam/marytts:5.2-arm64
+    image: my-marytts
     tty: true
 
   mozillatts:
-    image: synesthesiam/mozilla-tts:arm64
+    image: my-mozillatts
     tty: true
