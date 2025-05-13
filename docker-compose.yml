@@ -1,6 +1,4 @@
 services:
-
-  # ────────────────
   marytts:
     build:
       context: ./marytts
@@ -8,25 +6,9 @@ services:
     image: my-marytts
     container_name: marytts
     ports:
-      - '59125:59125'
+      - "59125:59125"
     restart: unless-stopped
 
-  # ────────────────
-  # Mozilla-TTS service (mozillatts)
-  # ────────────────
-  # mozillatts:
-  #   build:
-  #     context: ./mozillatts
-  #     dockerfile: Dockerfile
-  #   image: my-mozillatts
-  #   container_name: mozillatts
-  #   ports:
-  #     - '5002:5002'
-  #   restart: unless-stopped
-
-  # ────────────────
-  # OpenTTS service
-  # ────────────────
   opentts:
     build:
       context: ./opentts
@@ -34,12 +16,13 @@ services:
     image: my-opentts
     container_name: opentts
     ports:
-      - '5500:5500'
-    command:
-      - python3
-      - app.py
-      - --marytts-url
-      - http://marytts:59125
-      - --mozillatts-url
-      - http://mozillatts:5002
+      - "5500:5500"
+    depends_on:
+      - marytts
+    # ❌ Remove the bogus --mozillatts-url flag here
+    command: >
+      python3 app.py
+        --host 0.0.0.0
+        --port 5500
+        --marytts-url http://marytts:59125
     restart: unless-stopped
