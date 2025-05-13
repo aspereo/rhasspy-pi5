@@ -35,9 +35,6 @@ services:
     container_name: opentts
     ports:
       - '5500:5500'
-    depends_on:
-      - marytts
-      - mozillatts
     command:
       - python3
       - app.py
