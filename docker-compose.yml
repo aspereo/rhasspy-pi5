@@ -10,6 +10,6 @@ services:
     image: my-marytts
     tty: true
 
-  mozillatts:
-    image: my-mozillatts
-    tty: true
+  # mozillatts:
+  #   image: my-mozillatts
+  #   tty: true
