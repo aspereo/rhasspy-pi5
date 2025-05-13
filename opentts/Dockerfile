@@ -19,7 +19,7 @@ WORKDIR /app
 
 # 3) Pin Jinja2 and Werkzeug to compatible versions, then install Python deps
 RUN pip install --upgrade pip setuptools wheel \
- && pip install "jinja2<3.1" "werkzeug<3.0" \                              # Pin Werkzeug below v3.0 to restore url_decode :contentReference[oaicite:0]{index=0}
+ && pip install "jinja2<3.1" "werkzeug<3.0" \                             
  && pip install -r requirements.txt
 
 # 4) Expose port & default command
