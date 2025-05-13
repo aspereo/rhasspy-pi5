@@ -19,7 +19,6 @@ services:
       - "5500:5500"
     depends_on:
       - marytts
-    # ❌ Remove the bogus --mozillatts-url flag here
     command: >
       python3 app.py
         --host 0.0.0.0
